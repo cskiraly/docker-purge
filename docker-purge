@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Usage: $0 <image> <regex> <postfix>
+docker save $1 -o tmp.tar
+mkdir tmp
+cd tmp
+tar xf ../tmp.tar
+rm ../tmp.tar
+node ../docker-purge.js $2 $3
+tar cf new.tar *
+docker load -i new.tar
+cd ..
+rm -rf tmp
+
