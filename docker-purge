@@ -12,7 +12,7 @@ usage(){
 }
 
 BINDIR=$(dirname $$0)
-POSTFIX="-reduced"
+POSTFIX="" # replace existing image 
 
 while getopts i:r:p:h FLAG; do
   case $FLAG in
