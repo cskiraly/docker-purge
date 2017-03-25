@@ -43,7 +43,7 @@ mkdir tmp
 cd tmp
 tar xf ../tmp.tar
 rm ../tmp.tar
-node ../docker-purge.js $REGEX $POSTFIX
+node ../docker-purge.js "$REGEX" "$POSTFIX"
 tar cf new.tar *
 docker load -i new.tar
 cd ..
