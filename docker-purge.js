@@ -1,6 +1,7 @@
 // format documented at https://github.com/docker/docker/blob/master/image/spec/v1.2.md#combined-image-json--filesystem-changeset-format
 var fs = require('fs');
 var pattern = process.argv[2];
+var postfix = process.argv[3]
 
 // read manifest
 fs.readFile('manifest.json', 'utf8', function (err, data) {
@@ -40,7 +41,7 @@ fs.readFile('manifest.json', 'utf8', function (err, data) {
       // for the image, but I've yet to find the correct documentetion for that.
       // See e.g. https://github.com/docker/docker/issues/16482
       manifest[0].Config = "0000" + manifest[0].Config.substr(4);
-      manifest[0].RepoTags[0] += "-reduced";
+      manifest[0].RepoTags[0] += postfix;
       // We also fake an image sha256 in the config. Note that this field is not documented
       if ("Image" in config.config) {
         config.config.Image = config.config.Image.replace(/sha256:.{4}/,"sha256:0000");
