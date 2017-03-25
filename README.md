@@ -14,10 +14,12 @@ Requirements
 Usage
 ===
 
-> docker-purge -i <image> -r <regex> [-p postfix]
+```
+  docker-purge -i <image> -r <regex> [-p postfix]
       -i image: docker image to start from
       -r regex: regular expression to select layers to purge
       -p postfix: postfix to apply at the end of the tag name
       -h : this help
+```
 
 If -p is omitted, docker-purge will replace image with the new reduced version.
